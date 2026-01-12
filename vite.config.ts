@@ -14,7 +14,7 @@ export default defineConfig({
   ],
   base: './', // Quan trọng để đường dẫn ảnh/css không bị sai khi nhúng vào main app
   build: {
-    sourcemap: true,
+    sourcemap: 'inline',
     lib: {
       entry: './src/main.tsx', // Đường dẫn file entry ở bước 1
       name: `${packageName}-[name]`, // Khớp với library: `${packageName}-[name]` của Main App
@@ -30,8 +30,8 @@ export default defineConfig({
         },
       },
     },
-  }
-  // define: {
-  //   'process.env.NODE_ENV': JSON.stringify('production'),
-  // },
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify('production'),
+  },
 });
