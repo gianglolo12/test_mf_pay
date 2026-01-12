@@ -2,6 +2,7 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { name as packageName } from '../package.json';
 
 let root: ReactDOM.Root | null = null;
 
@@ -47,3 +48,5 @@ export default {
   mount,
   unmount,
 };
+
+(window as any)[`${packageName}-[name]`] = { bootstrap, mount, unmount };
