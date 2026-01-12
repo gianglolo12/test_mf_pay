@@ -2,7 +2,7 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { name as packageName } from '../package.json';
+// import { name as packageName } from '../package.json';
 
 let root: ReactDOM.Root | null = null;
 
@@ -23,9 +23,9 @@ function render(props: any) {
   }
 }
 
-// if (!(window as any).__POWERED_BY_VNG_HOME__) {
-//   render({});
-// }
+if (!(window as any).__POWERED_BY_VNG_HOME__) {
+  render({});
+}
 
 export async function bootstrap() {
   console.log('[Nexus] app bootstraped');
@@ -41,12 +41,3 @@ export async function unmount() {
   root?.unmount();
   root = null;
 }
-
-// Export default cho UMD format
-export default {
-  bootstrap,
-  mount,
-  unmount,
-};
-
-(window as any)[`${packageName}-[name]`] = { bootstrap, mount, unmount };
