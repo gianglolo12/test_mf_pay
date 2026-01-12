@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import publicPath from "vite-plugin-public-path";
+import publicPath from 'vite-plugin-public-path';
 
 import { name as packageName } from './package.json';
 
@@ -21,12 +21,12 @@ export default defineConfig({
       fileName: () => `index.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-           'react/jsx-runtime': 'React'
+          'react/jsx-runtime': 'React',
         },
       },
     },

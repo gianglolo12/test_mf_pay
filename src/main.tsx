@@ -26,17 +26,26 @@ if (!(window as any).__POWERED_BY_VNG_HOME__) {
   render({});
 }
 
-export async function bootstrap() {
+async function bootstrap() {
   console.log('[Nexus] app bootstraped');
 }
 
-export async function mount(props: any) {
+async function mount(props: any) {
   console.log('[Nexus] app mounted', props);
   render(props);
 }
 
-export async function unmount() {
+async function unmount() {
   console.log('[Nexus] app unmounted');
   root?.unmount();
   root = null;
 }
+
+export default {
+  bootstrap,
+  mount,
+  unmount,
+};
+
+// Vẫn giữ named exports cho tương thích
+export { bootstrap, mount, unmount };
