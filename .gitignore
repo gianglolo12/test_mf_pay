@@ -1,0 +1,16 @@
+# Build output
+build/
+dist/
+
+# Node modules folder
+node_modules/
+*.zip
+
+pnpm-lock.yaml
+package-lock.json
+.vscode/symbols.json
+.idea
+coverage
+
+.DS_Store
+.DS_Store?
