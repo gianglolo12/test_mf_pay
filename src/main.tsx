@@ -22,30 +22,28 @@ function render(props: any) {
   }
 }
 
-if (!(window as any).__POWERED_BY_VNG_HOME__) {
-  render({});
-}
+// if (!(window as any).__POWERED_BY_VNG_HOME__) {
+//   render({});
+// }
 
-async function bootstrap() {
+export async function bootstrap() {
   console.log('[Nexus] app bootstraped');
 }
 
-async function mount(props: any) {
+export async function mount(props: any) {
   console.log('[Nexus] app mounted', props);
   render(props);
 }
 
-async function unmount() {
+export async function unmount() {
   console.log('[Nexus] app unmounted');
   root?.unmount();
   root = null;
 }
 
+// Export default cho UMD format
 export default {
   bootstrap,
   mount,
   unmount,
 };
-
-// Vẫn giữ named exports cho tương thích
-export { bootstrap, mount, unmount };
