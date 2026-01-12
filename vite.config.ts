@@ -14,7 +14,6 @@ export default defineConfig({
   ],
   base: './', // Quan trọng để đường dẫn ảnh/css không bị sai khi nhúng vào main app
   build: {
-    sourcemap: 'inline',
     lib: {
       entry: './src/main.tsx', // Đường dẫn file entry ở bước 1
       name: `${packageName}-[name]`, // Khớp với library: `${packageName}-[name]` của Main App
@@ -27,6 +26,7 @@ export default defineConfig({
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+           'react/jsx-runtime': 'React'
         },
       },
     },
