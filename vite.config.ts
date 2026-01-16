@@ -23,6 +23,7 @@ function copyHtmlPlugin(): Plugin {
   <body>
     <div id="root"></div>
     <script src="./${packageName}.umd.js"></script>
+    <link rel="stylesheet" href="./${packageName}.css">
   </body>
 </html>`;
       
@@ -54,7 +55,7 @@ export default defineConfig({
     rollupOptions: {
       // external: ['react', 'react-dom'],
       output: {
-        assetFileNames: 'assets/[name].[hash].[ext]',
+        assetFileNames: 'assets/[name].[ext]',
         // globals: {
         //   react: 'React',
         //   'react-dom': 'ReactDOM',
