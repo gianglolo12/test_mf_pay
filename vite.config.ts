@@ -19,8 +19,6 @@ function copyHtmlPlugin(): Plugin {
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>portal-frontend</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   </head>
   <body>
     <div id="root"></div>
@@ -54,13 +52,13 @@ export default defineConfig({
       fileName: (format) => `${packageName}.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      // external: ['react', 'react-dom'],
       output: {
         assetFileNames: 'assets/[name].[hash].[ext]',
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
+        // globals: {
+        //   react: 'React',
+        //   'react-dom': 'ReactDOM',
+        // },
       },
     },
   },
