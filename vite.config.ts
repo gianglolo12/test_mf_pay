@@ -1,5 +1,6 @@
+import path from 'path';
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
 import publicPath from 'vite-plugin-public-path';
 
 import { name as packageName } from './package.json';
@@ -14,18 +15,18 @@ export default defineConfig({
   base: './',
   build: {
     lib: {
-      entry: './src/main.tsx',
+      entry: path.resolve(__dirname, 'src/main.tsx'),
       name: `${packageName}-[name]`,
       formats: ['umd'],
-      fileName: () => `index.js`,
+      fileName: (format) => `${packageName}.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react-dom'],
       output: {
+        assetFileNames: 'assets/[name].[hash].[ext]',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'React',
         },
       },
     },
