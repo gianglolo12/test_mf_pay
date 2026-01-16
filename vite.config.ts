@@ -12,6 +12,19 @@ function copyHtmlPlugin(): Plugin {
   return {
     name: 'copy-html',
     closeBundle() {
+      // Tìm file CSS trong thư mục dist/assets
+      const distPath = path.resolve(__dirname, 'dist');
+      const assetsPath = path.join(distPath, 'assets');
+      
+      let cssLink = '';
+      if (fs.existsSync(assetsPath)) {
+        const files = fs.readdirSync(assetsPath);
+        const cssFile = files.find(file => file.endsWith('.css'));
+        if (cssFile) {
+          cssLink = `<link rel="stylesheet" href="./assets/${cssFile}">`;
+        }
+      }
+      
       const htmlContent = `<!doctype html>
 <html lang="en">
   <head>
@@ -19,11 +32,11 @@ function copyHtmlPlugin(): Plugin {
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>portal-frontend</title>
+    ${cssLink}
   </head>
   <body>
     <div id="root"></div>
     <script src="./${packageName}.umd.js"></script>
-    <link rel="stylesheet" href="./${packageName}.css">
   </body>
 </html>`;
       
